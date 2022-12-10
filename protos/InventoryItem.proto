@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package inventoryitem;
+import "Book.proto";
+
+enum Status{
+    STATUS_UNSPECIFIED = 0;
+    STATUS_AVAILABLE = 1;
+    STATUS_TAKEN = 2;
+}
+
+message InventoryItem{
+    int32 inventoryNum = 1;
+    Status status = 2;
+    oneof types {
+        book.Book aBook = 3;
+    };
+}

@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+import "Book.proto";
+import "InventoryItem.proto";
+
+service InventoryService{
+    rpc CreateBook(CreateBookRequest) returns (CreateBookResponse) {};
+    rpc GetBook(GetBookRequest) returns (GetBookResponse) {};
+}
+
+message CreateBookRequest{
+    book.Book newBook = 1;
+}
+
+message CreateBookResponse{
+    string message = 1;
+}
+
+message GetBookRequest{
+    string isbn = 1; 
+}
+
+message GetBookResponse{
+    string title = 1;
+    string author = 2;
+    book.Genre genre = 3;
+    int32 publishYear = 4;
+}
+
